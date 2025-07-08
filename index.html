@@ -1,0 +1,1985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Regimen - Diet & Workout Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .nav-tabs {
+            display: flex;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 15px 20px;
+            background: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-tab:hover {
+            background: #f8f9fa;
+        }
+
+        .nav-tab.active {
+            background: #667eea;
+            color: white;
+            border-bottom-color: #5a67d8;
+        }
+
+        .content {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h2 {
+            color: #5a67d8;
+            font-size: 1.8em;
+            margin: 30px 0 15px 0;
+            padding-left: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        h3 {
+            color: #4c51bf;
+            font-size: 1.4em;
+            margin: 25px 0 10px 0;
+        }
+
+        h4 {
+            color: #553c9a;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #4c51bf;
+        }
+
+        em {
+            color: #667eea;
+            font-style: italic;
+        }
+
+        .recipe-card {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .recipe-card h4 {
+            color: #667eea;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .workout-day {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .workout-day h3 {
+            color: #667eea;
+            margin-top: 0;
+        }
+
+        .exercise-section {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            border-left: 5px solid #3b82f6;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .exercise-section h3 {
+            color: #3b82f6;
+            margin-top: 0;
+        }
+
+        .cost-card {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 1px solid #10b981;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .cost-card h4 {
+            color: #10b981;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .highlight-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            border-top: 4px solid #667eea;
+        }
+
+        .stat-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #4c51bf;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: #667eea;
+            color: white;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏃‍♂️ Health Regimen</h1>
+            <p>Your Complete Diet & Workout Plan</p>
+        </div>
+
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showContent('overview')">📊 Overview</button>
+            <button class="nav-tab" onclick="showContent('diet')">🥗 Diet Plan</button>
+            <button class="nav-tab" onclick="showContent('workout')">💪 Workout Routine</button>
+            <button class="nav-tab" onclick="showContent('shopping')">🛒 Shopping List</button>
+            <button class="nav-tab" onclick="showContent('exercise')">🏋️ Exercise Guide</button>
+        </div>
+
+        <div id="overview" class="content-section active">
+            <div class="content">
+                <h1>📊 Program Overview</h1>
+                
+                <div class="highlight-box">
+                    <h3>🎯 Your Transformation Goals</h3>
+                    <p><strong>Current:</strong> [Your Age] | [Your Height] | [Current Weight] | [Current Body Fat %]</p>
+                    <p><strong>Target:</strong> [Target Weight] | [Target Body Fat %]</p>
+                    <p><strong>Timeline:</strong> 12-16 weeks</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4>Daily Calories</h4>
+                        <div class="stat-value">1,500-1,600</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Protein Target</h4>
+                        <div class="stat-value">150g</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Carbs Target</h4>
+                        <div class="stat-value">150g</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Fat Target</h4>
+                        <div class="stat-value">30g</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Workout Days</h4>
+                        <div class="stat-value">6/week</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Session Length</h4>
+                        <div class="stat-value">75-90 min</div>
+                    </div>
+                </div>
+
+                <h2>🍽️ Diet Strategy</h2>
+                <ul>
+                    <li><strong>High Protein:</strong> 1:1 carb-to-protein ratio for muscle preservation</li>
+                    <li><strong>Low Fat:</strong> Minimal fat intake to maximize calorie efficiency</li>
+                    <li><strong>Nutrient Timing:</strong> Strategic meal timing around workouts</li>
+                    <li><strong>Hydration:</strong> 8+ glasses of water daily</li>
+                </ul>
+
+                <h2>🏋️‍♂️ Training Strategy</h2>
+                <ul>
+                    <li><strong>Upper/Lower Split:</strong> Balanced muscle development</li>
+                    <li><strong>Integrated Cardio:</strong> HIIT and LISS for fat loss</li>
+                    <li><strong>Progressive Overload:</strong> Continuous strength progression</li>
+                    <li><strong>Recovery Focus:</strong> Adequate rest for muscle growth</li>
+                </ul>
+
+                <h2>📈 Expected Results Timeline</h2>
+                <div class="workout-day">
+                    <h4>Month 1: Foundation (4-6 lbs lost)</h4>
+                    <p>Establishing routines, learning proper form, initial water weight loss</p>
+                </div>
+                <div class="workout-day">
+                    <h4>Month 2: Momentum (8-12 lbs lost)</h4>
+                    <p>Strength gains, improved endurance, visible body composition changes</p>
+                </div>
+                <div class="workout-day">
+                    <h4>Month 3: Acceleration (12-18 lbs lost)</h4>
+                    <p>Significant muscle definition, peak strength gains, consistent fat loss</p>
+                </div>
+                <div class="workout-day">
+                    <h4>Month 4: Final Push (16-24 lbs lost)</h4>
+                    <p>Target body fat achieved, established healthy habits, goal completion</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="diet" class="content-section">
+            <div class="content">
+                <h1>🍎 7-Day High-Protein, Low-Fat Diet Plan</h1>
+                <p><em>Weekly Meal Plan Template</em></p>
+                
+                <h2>Diet Overview</h2>
+                <ul>
+                    <li><strong>Goal</strong>: High protein, low fat, 1:1 carb-to-protein ratio</li>
+                    <li><strong>Target</strong>: ~150g protein, ~150g carbs, ~30g fat per day</li>
+                    <li><strong>Calories</strong>: Approximately 1,500-1,600 per day</li>
+                </ul>
+                
+                <hr>
+                
+                <h2>WEEK SCHEDULE</h2>
+                
+                <h3>MONDAY</h3>
+                <p><strong>Breakfast</strong>: Egg White Omelette with Oatmeal<br>
+                <strong>Lunch</strong>: Chicken Breast with Quinoa Salad<br>
+                <strong>Dinner</strong>: Baked Cod with Sweet Potato</p>
+                
+                <h3>TUESDAY</h3>
+                <p><strong>Breakfast</strong>: Greek Yogurt Parfait with Berries<br>
+                <strong>Lunch</strong>: Turkey and Rice Bowl<br>
+                <strong>Dinner</strong>: Lean Beef Stir-Fry with Rice</p>
+                
+                <h3>WEDNESDAY</h3>
+                <p><strong>Breakfast</strong>: Protein Pancakes with Banana<br>
+                <strong>Lunch</strong>: Tuna Salad with Whole Grain Crackers<br>
+                <strong>Dinner</strong>: Grilled Chicken with Pasta</p>
+                
+                <h3>THURSDAY</h3>
+                <p><strong>Breakfast</strong>: Cottage Cheese Bowl with Fruit<br>
+                <strong>Lunch</strong>: Shrimp and Quinoa Salad<br>
+                <strong>Dinner</strong>: Turkey Meatballs with Rice</p>
+                
+                <h3>FRIDAY</h3>
+                <p><strong>Breakfast</strong>: Egg White Scramble with Toast<br>
+                <strong>Lunch</strong>: Chicken Salad with Sweet Potato<br>
+                <strong>Dinner</strong>: Baked Tilapia with Quinoa</p>
+                
+                <h3>SATURDAY</h3>
+                <p><strong>Breakfast</strong>: Protein Smoothie Bowl<br>
+                <strong>Lunch</strong>: Lean Beef and Rice Bowl<br>
+                <strong>Dinner</strong>: Grilled Chicken Breast with Pasta</p>
+                
+                <h3>SUNDAY</h3>
+                <p><strong>Breakfast</strong>: Greek Yogurt with Oats<br>
+                <strong>Lunch</strong>: Tuna and Quinoa Salad<br>
+                <strong>Dinner</strong>: Baked Cod with Sweet Potato</p>
+                
+                <hr>
+                
+                <h2>DETAILED RECIPES</h2>
+                
+                <h3>BREAKFAST RECIPES</h3>
+                
+                <div class="recipe-card">
+                    <h4>Egg White Omelette with Oatmeal</h4>
+                    <ul>
+                        <li>6 egg whites</li>
+                        <li>1/2 cup rolled oats</li>
+                        <li>1/2 cup mixed vegetables (bell peppers, spinach, mushrooms)</li>
+                        <li>1 tsp olive oil</li>
+                        <li>Salt, pepper, herbs to taste</li>
+                    </ul>
+                    <p><strong>Instructions</strong>: Cook oats with water. Sauté vegetables in olive oil, add egg whites, fold into omelette. Serve with oatmeal.</p>
+                </div>
+                
+                <div class="recipe-card">
+                    <h4>Greek Yogurt Parfait with Berries</h4>
+                    <ul>
+                        <li>1 cup non-fat Greek yogurt</li>
+                        <li>1/2 cup mixed berries</li>
+                        <li>1/4 cup granola (low-fat)</li>
+                        <li>1 tbsp honey</li>
+                    </ul>
+                    <p><strong>Instructions</strong>: Layer yogurt, berries, and granola. Drizzle with honey.</p>
+                </div>
+                
+                <div class="recipe-card">
+                    <h4>Protein Pancakes with Banana</h4>
+                    <ul>
+                        <li>4 egg whites</li>
+                        <li>1/2 cup oat flour</li>
+                        <li>1 scoop vanilla protein powder</li>
+                        <li>1 medium banana (sliced)</li>
+                        <li>1 tsp baking powder</li>
+                        <li>Non-stick cooking spray</li>
+                    </ul>
+                    <p><strong>Instructions</strong>: Mix dry ingredients, add egg whites and mashed banana. Cook on non-stick pan. Serve with banana slices.</p>
+                </div>
+                
+                <div class="recipe-card">
+                    <h4>Cottage Cheese Bowl with Fruit</h4>
+                    <ul>
+                        <li>1 cup low-fat cottage cheese</li>
+                        <li>1/2 cup diced pineapple</li>
+                        <li>1/4 cup granola</li>
+                        <li>1 tbsp chopped almonds</li>
+                    </ul>
+                    <p><strong>Instructions</strong>: Combine cottage cheese with fruit, top with granola and almonds.</p>
+                </div>
+                
+                <div class="recipe-card">
+                    <h4>Egg White Scramble with Toast</h4>
+                    <ul>
+                        <li>6 egg whites</li>
+                        <li>2 slices whole grain bread</li>
+                        <li>1/4 cup diced tomatoes</li>
+                        <li>1/4 cup spinach</li>
+                        <li>1 tsp olive oil</li>
+                    </ul>
+                    <p><strong>Instructions</strong>: Sauté vegetables, add egg whites, scramble. Serve with toasted bread.</p>
+                </div>
+                
+                <div class="recipe-card">
+                    <h4>Protein Smoothie Bowl</h4>
+                    <ul>
+                        <li>1 scoop vanilla protein powder</li>
+                        <li>1/2 cup frozen berries</li>
+                        <li>1/2 banana</li>
+                        <li>1/4 cup oats</li>
+                        <li>1/2 cup unsweetened almond milk</li>
+                    </ul>
+                    <p><strong>Instructions</strong>: Blend all ingredients until thick. Pour into bowl, top with extra berries and oats.</p>
+                </div>
+                
+                <div class="recipe-card">
+                    <h4>Greek Yogurt with Oats</h4>
+                    <ul>
+                        <li>1 cup non-fat Greek yogurt</li>
+                        <li>1/3 cup rolled oats</li>
+                        <li>1/2 cup mixed berries</li>
+                        <li>1 tsp honey</li>
+                    </ul>
+                    <p><strong>Instructions</strong>: Mix oats into yogurt, top with berries and honey.</p>
+                </div>
+                
+                <h3>LUNCH RECIPES</h3>
+                
+                <div class="recipe-card">
+                    <h4>Chicken Breast with Quinoa Salad</h4>
+                    <ul>
+                        <li>4 oz grilled chicken breast</li>
+                        <li>1/2 cup cooked quinoa</li>
+                        <li>1/4 cup cucumber, diced</li>
+                        <li>1/4 cup cherry tomatoes</li>
+                        <li>2 tbsp lemon juice</li>
+                        <li>Salt, pepper, herbs</li>
+                    </ul>
+                    <p><strong>Instructions</strong>: Grill chicken, season with herbs. Mix quinoa with vegetables and lemon juice.</p>
+                </div>
+                
+                <div class="recipe-card">
+                    <h4>Turkey and Rice Bowl</h4>
+                    <ul>
+                        <li>4 oz ground turkey (99% lean)</li>
+                        <li>1/2 cup brown rice</li>
+                        <li>1/4 cup black beans</li>
+                        <li>1/4 cup corn</li>
+                        <li>1/4 cup salsa</li>
+                        <li>1/4 cup lettuce</li>
+                    </ul>
+                    <p><strong>Instructions</strong>: Cook turkey with seasonings, serve over rice with beans, corn, salsa, and lettuce.</p>
+                </div>
+                
+                <div class="recipe-card">
+                    <h4>Tuna Salad with Whole Grain Crackers</h4>
+                    <ul>
+                        <li>1 can tuna in water (5 oz)</li>
+                        <li>1 tbsp light mayo</li>
+                        <li>1/4 cup diced celery</li>
+                        <li>15 whole grain crackers</li>
+                        <li>1/4 cup cherry tomatoes</li>
+                    </ul>
+                    <p><strong>Instructions</strong>: Mix tuna with mayo and celery. Serve with crackers and tomatoes.</p>
+                </div>
+                
+                <div class="recipe-card">
+                    <h4>Shrimp and Quinoa Salad</h4>
+                    <ul>
+                        <li>5 oz cooked shrimp</li>
+                        <li>1/2 cup cooked quinoa</li>
+                        <li>1/4 cup cucumber</li>
+                        <li>1/4 cup bell peppers</li>
+                        <li>2 tbsp lemon juice</li>
+                        <li>Fresh herbs</li>
+                    </ul>
+                    <p><strong>Instructions</strong>: Combine all ingredients, toss with lemon juice and herbs.</p>
+                </div>
+                
+                <div class="recipe-card">
+                    <h4>Chicken Salad with Sweet Potato</h4>
+                    <ul>
+                        <li>4 oz grilled chicken breast</li>
+                        <li>1 medium baked sweet potato</li>
+                        <li>2 cups mixed greens</li>
+                        <li>1/4 cup cherry tomatoes</li>
+                        <li>2 tbsp balsamic vinegar</li>
+                    </ul>
+                    <p><strong>Instructions</strong>: Slice chicken, serve over greens with sweet potato and tomatoes. Drizzle with vinegar.</p>
+                </div>
+                
+                <div class="recipe-card">
+                    <h4>Lean Beef and Rice Bowl</h4>
+                    <ul>
+                        <li>4 oz lean ground beef (95% lean)</li>
+                        <li>1/2 cup brown rice</li>
+                        <li>1/4 cup steamed broccoli</li>
+                        <li>1/4 cup carrots</li>
+                        <li>1 tbsp teriyaki sauce</li>
+                    </ul>
+                    <p><strong>Instructions</strong>: Cook beef with seasonings, serve over rice with vegetables and sauce.</p>
+                </div>
+                
+                <div class="recipe-card">
+                    <h4>Tuna and Quinoa Salad</h4>
+                    <ul>
+                        <li>1 can tuna in water (5 oz)</li>
+                        <li>1/2 cup cooked quinoa</li>
+                        <li>1/4 cup chickpeas</li>
+                        <li>1/4 cup cucumber</li>
+                        <li>2 tbsp lemon juice</li>
+                    </ul>
+                    <p><strong>Instructions</strong>: Mix all ingredients with lemon juice.</p>
+                </div>
+                
+                <h3>DINNER RECIPES</h3>
+                
+                <div class="recipe-card">
+                    <h4>Baked Cod with Sweet Potato</h4>
+                    <ul>
+                        <li>5 oz cod fillet</li>
+                        <li>1 medium sweet potato</li>
+                        <li>1 tsp olive oil</li>
+                        <li>1/2 cup steamed green beans</li>
+                        <li>Lemon, herbs, seasonings</li>
+                    </ul>
+                    <p><strong>Instructions</strong>: Bake cod at 400°F for 15 minutes. Bake sweet potato. Steam green beans. Season with lemon and herbs.</p>
+                </div>
+                
+                <div class="recipe-card">
+                    <h4>Lean Beef Stir-Fry with Rice</h4>
+                    <ul>
+                        <li>4 oz lean beef strips</li>
+                        <li>1/2 cup brown rice</li>
+                        <li>1 cup mixed stir-fry vegetables</li>
+                        <li>1 tbsp low-sodium soy sauce</li>
+                        <li>1 tsp sesame oil</li>
+                    </ul>
+                    <p><strong>Instructions</strong>: Stir-fry beef and vegetables in sesame oil. Add soy sauce. Serve over rice.</p>
+                </div>
+                
+                <div class="recipe-card">
+                    <h4>Grilled Chicken with Pasta</h4>
+                    <ul>
+                        <li>4 oz grilled chicken breast</li>
+                        <li>1 cup cooked whole grain pasta</li>
+                        <li>1/2 cup marinara sauce (low-fat)</li>
+                        <li>1/4 cup steamed broccoli</li>
+                        <li>Italian herbs</li>
+                    </ul>
+                    <p><strong>Instructions</strong>: Grill chicken with herbs. Serve over pasta with marinara sauce and steamed broccoli.</p>
+                </div>
+                
+                <div class="recipe-card">
+                    <h4>Turkey Meatballs with Rice</h4>
+                    <ul>
+                        <li>4 oz ground turkey (99% lean)</li>
+                        <li>1/2 cup brown rice</li>
+                        <li>1 egg white</li>
+                        <li>1/4 cup breadcrumbs</li>
+                        <li>1/2 cup marinara sauce</li>
+                    </ul>
+                    <p><strong>Instructions</strong>: Mix turkey with egg white and breadcrumbs. Form meatballs, bake at 375°F for 20 minutes. Serve with rice and sauce.</p>
+                </div>
+                
+                <div class="recipe-card">
+                    <h4>Baked Tilapia with Quinoa</h4>
+                    <ul>
+                        <li>5 oz tilapia fillet</li>
+                        <li>1/2 cup cooked quinoa</li>
+                        <li>1/2 cup roasted vegetables</li>
+                        <li>1 tsp olive oil</li>
+                        <li>Lemon, herbs</li>
+                    </ul>
+                    <p><strong>Instructions</strong>: Bake tilapia at 400°F for 12 minutes. Serve with quinoa and roasted vegetables.</p>
+                </div>
+                
+                <hr>
+                
+                <h2>SHOPPING LIST</h2>
+                
+                <h3>PROTEINS</h3>
+                <ul>
+                    <li>2 dozen eggs (use whites mainly)</li>
+                    <li>2 lbs boneless, skinless chicken breasts</li>
+                    <li>1 lb ground turkey (99% lean)</li>
+                    <li>1 lb lean ground beef (95% lean)</li>
+                    <li>1 lb cod fillets</li>
+                    <li>1 lb tilapia fillets</li>
+                    <li>1 lb raw shrimp</li>
+                    <li>3 cans tuna in water (5 oz each)</li>
+                    <li>32 oz container non-fat Greek yogurt</li>
+                    <li>16 oz container low-fat cottage cheese</li>
+                    <li>2 scoops vanilla protein powder</li>
+                </ul>
+                
+                <h3>CARBOHYDRATES</h3>
+                <ul>
+                    <li>2 lbs quinoa</li>
+                    <li>2 lbs brown rice</li>
+                    <li>2 lbs rolled oats</li>
+                    <li>1 lb oat flour</li>
+                    <li>1 loaf whole grain bread</li>
+                    <li>1 box whole grain pasta</li>
+                    <li>1 box whole grain crackers</li>
+                    <li>1 bag sweet potatoes (3 lbs)</li>
+                    <li>1 container low-fat granola</li>
+                    <li>1 can black beans</li>
+                    <li>1 can chickpeas</li>
+                </ul>
+                
+                <h3>VEGETABLES & FRUITS</h3>
+                <ul>
+                    <li>2 bags mixed greens</li>
+                    <li>1 bag spinach</li>
+                    <li>1 container cherry tomatoes</li>
+                    <li>2 cucumbers</li>
+                    <li>1 bag bell peppers</li>
+                    <li>1 bag broccoli</li>
+                    <li>1 bag carrots</li>
+                    <li>1 bag green beans</li>
+                    <li>1 bag mixed stir-fry vegetables</li>
+                    <li>1 bag frozen mixed berries</li>
+                    <li>1 container fresh berries</li>
+                    <li>6 bananas</li>
+                    <li>1 container pineapple chunks</li>
+                    <li>1 bag mixed mushrooms</li>
+                </ul>
+                
+                <h3>PANTRY STAPLES</h3>
+                <ul>
+                    <li>Olive oil</li>
+                    <li>Non-stick cooking spray</li>
+                    <li>Light mayonnaise</li>
+                    <li>Low-sodium soy sauce</li>
+                    <li>Sesame oil</li>
+                    <li>Balsamic vinegar</li>
+                    <li>Lemon juice</li>
+                    <li>Marinara sauce (low-fat)</li>
+                    <li>Salsa</li>
+                    <li>Teriyaki sauce</li>
+                    <li>Honey</li>
+                    <li>Unsweetened almond milk</li>
+                    <li>Salt, pepper, herbs, spices</li>
+                    <li>Baking powder</li>
+                </ul>
+                
+                <h3>OPTIONAL ADDITIONS</h3>
+                <ul>
+                    <li>Hot sauce</li>
+                    <li>Mustard</li>
+                    <li>Garlic</li>
+                    <li>Onions</li>
+                    <li>Fresh herbs (parsley, cilantro, basil)</li>
+                </ul>
+                
+                <hr>
+                
+                <h2>MEAL PREP TIPS</h2>
+                <ol>
+                    <li><strong>Protein Prep</strong>: Cook chicken breasts and ground meats in batches at the beginning of the week</li>
+                    <li><strong>Grain Prep</strong>: Cook quinoa and rice in large batches and store in refrigerator</li>
+                    <li><strong>Vegetable Prep</strong>: Wash and chop vegetables when you get home from shopping</li>
+                    <li><strong>Egg Whites</strong>: Separate eggs at the beginning of the week and store whites in containers</li>
+                    <li><strong>Portion Control</strong>: Use a food scale to ensure accurate portions for optimal macronutrient ratios</li>
+                </ol>
+                
+                <h2>HYDRATION</h2>
+                <ul>
+                    <li>Drink at least 8 glasses of water daily</li>
+                    <li>Green tea and herbal teas are encouraged</li>
+                    <li>Limit caffeine and avoid sugary beverages</li>
+                </ul>
+                
+                <h2>NOTES</h2>
+                <ul>
+                    <li>All portions are calculated to maintain the 1:1 carb-to-protein ratio</li>
+                    <li>Fat content is kept minimal through cooking methods and ingredient choices</li>
+                    <li>Seasonings and herbs are unlimited to enhance flavor</li>
+                    <li>Adjust portions based on your individual caloric needs and activity level</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="workout" class="content-section">
+            <div class="content">
+                <h1>💪 6-Day Fat Loss & Muscle Building Workout Plan</h1>
+                <p><em>Customizable for Your Fitness Goals</em></p>
+                
+                <h2>PROGRAM OVERVIEW</h2>
+                <ul>
+                    <li><strong>Duration</strong>: 6 days per week, 1 rest day</li>
+                    <li><strong>Session Length</strong>: 75-90 minutes maximum</li>
+                    <li><strong>Split</strong>: Upper/Lower with integrated cardio</li>
+                    <li><strong>Primary Goal</strong>: Fat loss while preserving/building lean muscle</li>
+                    <li><strong>Target Timeline</strong>: 12-16 weeks to reach 15% body fat</li>
+                </ul>
+                
+                <h2>WEEKLY SCHEDULE</h2>
+                <table>
+                    <tr>
+                        <th>Day</th>
+                        <th>Workout Type</th>
+                        <th>Duration</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Monday</strong></td>
+                        <td>Upper Body Strength + HIIT</td>
+                        <td>85 min</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tuesday</strong></td>
+                        <td>Lower Body Strength + LISS</td>
+                        <td>80 min</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Wednesday</strong></td>
+                        <td>Upper Body Hypertrophy + HIIT</td>
+                        <td>85 min</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Thursday</strong></td>
+                        <td>Lower Body Hypertrophy + LISS</td>
+                        <td>80 min</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Friday</strong></td>
+                        <td>Full Body Circuit + Core</td>
+                        <td>75 min</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Saturday</strong></td>
+                        <td>Cardio Focused + Mobility</td>
+                        <td>70 min</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sunday</strong></td>
+                        <td>REST DAY</td>
+                        <td>-</td>
+                    </tr>
+                </table>
+                
+                <hr>
+                
+                <h2>DETAILED WORKOUT PLANS</h2>
+                
+                <div class="workout-day">
+                    <h3>MONDAY: Upper Body Strength + HIIT</h3>
+                    
+                    <h4>Warm-Up (10 minutes)</h4>
+                    <ul>
+                        <li>5 minutes light cardio (treadmill/bike)</li>
+                        <li>Arm circles, shoulder rolls</li>
+                        <li>Band pull-aparts</li>
+                        <li>Push-up to downward dog x 10</li>
+                    </ul>
+                    
+                    <h4>Strength Training (55 minutes)</h4>
+                    <p><strong>Rest 2-3 minutes between sets</strong></p>
+                    <ul>
+                        <li><strong>Barbell Bench Press</strong> - 4 sets x 6-8 reps</li>
+                        <li><strong>Bent-Over Barbell Row</strong> - 4 sets x 6-8 reps</li>
+                        <li><strong>Overhead Press</strong> - 4 sets x 8-10 reps</li>
+                        <li><strong>Weighted Pull-ups/Lat Pulldowns</strong> - 4 sets x 8-10 reps</li>
+                        <li><strong>Incline Dumbbell Press</strong> - 3 sets x 10-12 reps</li>
+                        <li><strong>Seated Cable Row</strong> - 3 sets x 10-12 reps</li>
+                        <li><strong>Dumbbell Shoulder Press</strong> - 3 sets x 12-15 reps</li>
+                        <li><strong>Barbell Curls</strong> - 3 sets x 12-15 reps</li>
+                        <li><strong>Close-Grip Bench Press</strong> - 3 sets x 12-15 reps</li>
+                    </ul>
+                    
+                    <h4>HIIT Cardio (20 minutes)</h4>
+                    <p><strong>Treadmill/Bike Protocol:</strong></p>
+                    <ul>
+                        <li>2 minutes moderate warm-up</li>
+                        <li>16 minutes: 30 seconds all-out, 30 seconds recovery</li>
+                        <li>2 minutes cool-down</li>
+                    </ul>
+                </div>
+                
+                <div class="workout-day">
+                    <h3>TUESDAY: Lower Body Strength + LISS</h3>
+                    
+                    <h4>Warm-Up (10 minutes)</h4>
+                    <ul>
+                        <li>5 minutes light cardio</li>
+                        <li>Leg swings, hip circles</li>
+                        <li>Bodyweight squats x 15</li>
+                        <li>Walking lunges x 20</li>
+                    </ul>
+                    
+                    <h4>Strength Training (50 minutes)</h4>
+                    <p><strong>Rest 2-3 minutes between sets</strong></p>
+                    <ul>
+                        <li><strong>Barbell Back Squat</strong> - 4 sets x 6-8 reps</li>
+                        <li><strong>Romanian Deadlift</strong> - 4 sets x 6-8 reps</li>
+                        <li><strong>Bulgarian Split Squats</strong> - 3 sets x 10-12 each leg</li>
+                        <li><strong>Hip Thrusts</strong> - 3 sets x 12-15 reps</li>
+                        <li><strong>Walking Lunges</strong> - 3 sets x 12-15 each leg</li>
+                        <li><strong>Leg Press</strong> - 3 sets x 15-20 reps</li>
+                        <li><strong>Leg Curls</strong> - 3 sets x 15-20 reps</li>
+                        <li><strong>Calf Raises</strong> - 4 sets x 20-25 reps</li>
+                    </ul>
+                    
+                    <h4>LISS Cardio (20 minutes)</h4>
+                    <ul>
+                        <li>Incline treadmill walk (3.5-4.0 mph, 5-8% incline)</li>
+                        <li>Target heart rate: 120-140 bpm</li>
+                    </ul>
+                </div>
+                
+                <div class="workout-day">
+                    <h3>WEDNESDAY: Upper Body Hypertrophy + HIIT</h3>
+                    
+                    <h4>Warm-Up (10 minutes)</h4>
+                    <ul>
+                        <li>5 minutes light cardio</li>
+                        <li>Dynamic upper body stretches</li>
+                        <li>Band exercises</li>
+                    </ul>
+                    
+                    <h4>Hypertrophy Training (55 minutes)</h4>
+                    <p><strong>Rest 60-90 seconds between sets</strong></p>
+                    <ul>
+                        <li><strong>Incline Dumbbell Press</strong> - 4 sets x 10-12 reps</li>
+                        <li><strong>T-Bar Row</strong> - 4 sets x 10-12 reps</li>
+                        <li><strong>Dumbbell Flyes</strong> - 3 sets x 12-15 reps</li>
+                        <li><strong>Wide-Grip Lat Pulldown</strong> - 3 sets x 12-15 reps</li>
+                        <li><strong>Lateral Raises</strong> - 4 sets x 15-20 reps</li>
+                        <li><strong>Face Pulls</strong> - 3 sets x 15-20 reps</li>
+                        <li><strong>Hammer Curls</strong> - 3 sets x 15-20 reps</li>
+                        <li><strong>Overhead Tricep Extension</strong> - 3 sets x 15-20 reps</li>
+                        <li><strong>Cable Crossovers</strong> - 3 sets x 15-20 reps</li>
+                    </ul>
+                    
+                    <h4>HIIT Cardio (20 minutes)</h4>
+                    <p><strong>Rowing Machine Protocol:</strong></p>
+                    <ul>
+                        <li>2 minutes easy pace</li>
+                        <li>16 minutes: 20 seconds hard, 40 seconds easy</li>
+                        <li>2 minutes cool-down</li>
+                    </ul>
+                </div>
+                
+                <div class="workout-day">
+                    <h3>THURSDAY: Lower Body Hypertrophy + LISS</h3>
+                    
+                    <h4>Warm-Up (10 minutes)</h4>
+                    <ul>
+                        <li>5 minutes light cardio</li>
+                        <li>Dynamic leg stretches</li>
+                        <li>Activation exercises</li>
+                    </ul>
+                    
+                    <h4>Hypertrophy Training (50 minutes)</h4>
+                    <p><strong>Rest 60-90 seconds between sets</strong></p>
+                    <ul>
+                        <li><strong>Goblet Squats</strong> - 4 sets x 12-15 reps</li>
+                        <li><strong>Stiff-Leg Deadlifts</strong> - 4 sets x 12-15 reps</li>
+                        <li><strong>Leg Press</strong> - 4 sets x 15-20 reps</li>
+                        <li><strong>Leg Curls</strong> - 4 sets x 15-20 reps</li>
+                        <li><strong>Leg Extensions</strong> - 3 sets x 15-20 reps</li>
+                        <li><strong>Glute Bridges</strong> - 3 sets x 20-25 reps</li>
+                        <li><strong>Lateral Lunges</strong> - 3 sets x 12-15 each side</li>
+                        <li><strong>Calf Raises</strong> - 4 sets x 20-25 reps</li>
+                    </ul>
+                    
+                    <h4>LISS Cardio (20 minutes)</h4>
+                    <ul>
+                        <li>Stationary bike (moderate intensity)</li>
+                        <li>Target heart rate: 120-140 bpm</li>
+                    </ul>
+                </div>
+                
+                <div class="workout-day">
+                    <h3>FRIDAY: Full Body Circuit + Core</h3>
+                    
+                    <h4>Warm-Up (10 minutes)</h4>
+                    <ul>
+                        <li>5 minutes light cardio</li>
+                        <li>Dynamic full-body stretches</li>
+                        <li>Joint mobility</li>
+                    </ul>
+                    
+                    <h4>Circuit Training (45 minutes)</h4>
+                    <p><strong>Complete 5 rounds, 45 seconds work, 15 seconds rest</strong></p>
+                    
+                    <p><strong>Circuit A (15 minutes):</strong></p>
+                    <ul>
+                        <li>Burpees</li>
+                        <li>Dumbbell Thrusters</li>
+                        <li>Mountain Climbers</li>
+                        <li>Kettlebell Swings</li>
+                        <li>Jump Squats</li>
+                    </ul>
+                    
+                    <p><strong>Rest 3 minutes</strong></p>
+                    
+                    <p><strong>Circuit B (15 minutes):</strong></p>
+                    <ul>
+                        <li>Push-ups</li>
+                        <li>Dumbbell Rows</li>
+                        <li>Bicycle Crunches</li>
+                        <li>Jumping Lunges</li>
+                        <li>Plank Hold</li>
+                    </ul>
+                    
+                    <p><strong>Rest 3 minutes</strong></p>
+                    
+                    <p><strong>Circuit C (15 minutes):</strong></p>
+                    <ul>
+                        <li>Dumbbell Snatches</li>
+                        <li>Box Steps</li>
+                        <li>Russian Twists</li>
+                        <li>Battle Ropes</li>
+                        <li>High Knees</li>
+                    </ul>
+                    
+                    <h4>Core Finisher (20 minutes)</h4>
+                    <ul>
+                        <li><strong>Plank</strong> - 3 sets x 60 seconds</li>
+                        <li><strong>Dead Bug</strong> - 3 sets x 10 each side</li>
+                        <li><strong>Hanging Knee Raises</strong> - 3 sets x 15-20</li>
+                        <li><strong>Russian Twists</strong> - 3 sets x 30</li>
+                        <li><strong>Bird Dog</strong> - 3 sets x 10 each side</li>
+                    </ul>
+                </div>
+                
+                <div class="workout-day">
+                    <h3>SATURDAY: Cardio Focused + Mobility</h3>
+                    
+                    <h4>Cardio Session (50 minutes)</h4>
+                    <p><strong>Option 1: Steady State</strong></p>
+                    <ul>
+                        <li>45 minutes moderate-intensity cardio</li>
+                        <li>Elliptical, bike, or incline walking</li>
+                        <li>Target heart rate: 130-150 bpm</li>
+                    </ul>
+                    
+                    <p><strong>Option 2: Mixed Intervals</strong></p>
+                    <ul>
+                        <li>10 minutes warm-up</li>
+                        <li>30 minutes: 2 minutes moderate, 1 minute hard</li>
+                        <li>10 minutes cool-down</li>
+                    </ul>
+                    
+                    <h4>Mobility & Recovery (20 minutes)</h4>
+                    <ul>
+                        <li><strong>Hip Flexor Stretch</strong> - 2 minutes each side</li>
+                        <li><strong>Thoracic Spine Rotation</strong> - 2 minutes each side</li>
+                        <li><strong>Hamstring Stretch</strong> - 2 minutes each side</li>
+                        <li><strong>Chest Doorway Stretch</strong> - 2 minutes</li>
+                        <li><strong>Cat-Cow Stretches</strong> - 2 minutes</li>
+                        <li><strong>Child's Pose</strong> - 2 minutes</li>
+                        <li><strong>Foam Rolling</strong> - 6 minutes (legs, back, shoulders)</li>
+                    </ul>
+                </div>
+                
+                <hr>
+                
+                <h2>PROGRESSION GUIDELINES</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4>Weeks 1-2: Foundation</h4>
+                        <p>Focus on form and technique. Use moderate weights (70-80% of max effort). Complete all prescribed reps and sets.</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Weeks 3-4: Intensity Increase</h4>
+                        <p>Increase weights by 5-10%. Add extra set to compound movements. Reduce rest time by 15-30 seconds.</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Weeks 5-8: Peak Phase</h4>
+                        <p>Increase weights by 5-10% again. Add drop sets to last set of isolation exercises. Increase cardio intensity.</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Weeks 9-12: Metabolic Focus</h4>
+                        <p>Maintain strength gains. Increase cardio frequency/duration. Add extra circuit day if needed.</p>
+                    </div>
+                </div>
+                
+                <h2>❤️ Heart Rate Zones</h2>
+                <ul>
+                    <li><strong>Maximum HR</strong>: 220 - [Your Age] bpm</li>
+                    <li><strong>Fat Burning Zone</strong>: 60-70% of Max HR</li>
+                    <li><strong>Aerobic Zone</strong>: 70-80% of Max HR</li>
+                    <li><strong>Anaerobic Zone</strong>: 80-90% of Max HR</li>
+                </ul>
+                
+                <h2>🎯 Target Milestones</h2>
+                <ul>
+                    <li><strong>Month 1</strong>: 4-6 lbs lost, strength maintained</li>
+                    <li><strong>Month 2</strong>: 8-12 lbs lost, improved endurance</li>
+                    <li><strong>Month 3</strong>: 12-18 lbs lost, visible muscle definition</li>
+                    <li><strong>Month 4</strong>: 16-24 lbs lost, target body fat achieved</li>
+                </ul>
+                
+                <h2>💡 Success Tips</h2>
+                <ul>
+                    <li><strong>Consistency Over Perfection</strong>: Missing one workout won't derail progress</li>
+                    <li><strong>Progressive Overload</strong>: Gradually increase weight, reps, or intensity</li>
+                    <li><strong>Form First</strong>: Perfect technique prevents injury</li>
+                    <li><strong>Listen to Your Body</strong>: Rest when needed, push when able</li>
+                    <li><strong>Track Everything</strong>: What gets measured gets managed</li>
+                    <li><strong>Stay Hydrated</strong>: Drink water before, during, and after workouts</li>
+                    <li><strong>Plan Ahead</strong>: Schedule workouts like important meetings</li>
+                    <li><strong>Find Accountability</strong>: Workout partner or trainer</li>
+                    <li><strong>Celebrate Small Wins</strong>: Acknowledge progress milestones</li>
+                    <li><strong>Be Patient</strong>: Sustainable fat loss takes time</li>
+                </ul>
+                
+                <h2>🏆 Expected Transformation</h2>
+                <ul>
+                    <li><strong>Starting</strong>: [Current Weight] at [Current BF%] ([Fat Mass], [Lean Mass])</li>
+                    <li><strong>Target</strong>: [Target Weight] at [Target BF%] ([Target Fat Mass], [Target Lean Mass])</li>
+                    <li><strong>Net Change</strong>: [Fat Loss] fat, [Muscle Gain] lean muscle</li>
+                </ul>
+                
+                <p><strong>Remember:</strong> This comprehensive program is designed to transform your physique efficiently and safely. The combination of strength training, cardio, and proper nutrition will help you achieve your fat loss goals while maintaining or even building lean muscle mass.</p>
+            </div>
+        </div>
+
+        <div id="shopping" class="content-section">
+            <div class="content">
+                <h1>🛒 Weekly Shopping List Cost Estimate</h1>
+                <p><em>Based on average U.S. grocery store prices (2025)</em></p>
+
+                <h2>PROTEINS - $85-110</h2>
+                <table>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Est. Price Range</th>
+                    </tr>
+                    <tr>
+                        <td>Eggs (2 dozen)</td>
+                        <td>24 eggs</td>
+                        <td>$6-8</td>
+                    </tr>
+                    <tr>
+                        <td>Chicken breasts</td>
+                        <td>2 lbs</td>
+                        <td>$12-16</td>
+                    </tr>
+                    <tr>
+                        <td>Ground turkey (99% lean)</td>
+                        <td>1 lb</td>
+                        <td>$8-10</td>
+                    </tr>
+                    <tr>
+                        <td>Lean ground beef (95% lean)</td>
+                        <td>1 lb</td>
+                        <td>$9-12</td>
+                    </tr>
+                    <tr>
+                        <td>Cod fillets</td>
+                        <td>1 lb</td>
+                        <td>$12-15</td>
+                    </tr>
+                    <tr>
+                        <td>Tilapia fillets</td>
+                        <td>1 lb</td>
+                        <td>$8-12</td>
+                    </tr>
+                    <tr>
+                        <td>Raw shrimp</td>
+                        <td>1 lb</td>
+                        <td>$10-14</td>
+                    </tr>
+                    <tr>
+                        <td>Canned tuna (3 cans)</td>
+                        <td>15 oz total</td>
+                        <td>$6-9</td>
+                    </tr>
+                    <tr>
+                        <td>Non-fat Greek yogurt</td>
+                        <td>32 oz</td>
+                        <td>$5-7</td>
+                    </tr>
+                    <tr>
+                        <td>Low-fat cottage cheese</td>
+                        <td>16 oz</td>
+                        <td>$3-4</td>
+                    </tr>
+                    <tr>
+                        <td>Protein powder</td>
+                        <td>2 scoops worth</td>
+                        <td>$6-8</td>
+                    </tr>
+                </table>
+
+                <h2>CARBOHYDRATES - $25-35</h2>
+                <table>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Est. Price Range</th>
+                    </tr>
+                    <tr>
+                        <td>Quinoa</td>
+                        <td>2 lbs</td>
+                        <td>$8-12</td>
+                    </tr>
+                    <tr>
+                        <td>Brown rice</td>
+                        <td>2 lbs</td>
+                        <td>$3-5</td>
+                    </tr>
+                    <tr>
+                        <td>Rolled oats</td>
+                        <td>2 lbs</td>
+                        <td>$4-6</td>
+                    </tr>
+                    <tr>
+                        <td>Oat flour</td>
+                        <td>1 lb</td>
+                        <td>$3-4</td>
+                    </tr>
+                    <tr>
+                        <td>Whole grain bread</td>
+                        <td>1 loaf</td>
+                        <td>$3-4</td>
+                    </tr>
+                    <tr>
+                        <td>Whole grain pasta</td>
+                        <td>1 box</td>
+                        <td>$2-3</td>
+                    </tr>
+                    <tr>
+                        <td>Whole grain crackers</td>
+                        <td>1 box</td>
+                        <td>$4-5</td>
+                    </tr>
+                    <tr>
+                        <td>Sweet potatoes</td>
+                        <td>3 lbs</td>
+                        <td>$3-4</td>
+                    </tr>
+                    <tr>
+                        <td>Low-fat granola</td>
+                        <td>1 container</td>
+                        <td>$4-6</td>
+                    </tr>
+                    <tr>
+                        <td>Black beans</td>
+                        <td>1 can</td>
+                        <td>$1-2</td>
+                    </tr>
+                    <tr>
+                        <td>Chickpeas</td>
+                        <td>1 can</td>
+                        <td>$1-2</td>
+                    </tr>
+                </table>
+
+                <h2>VEGETABLES & FRUITS - $30-45</h2>
+                <table>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Est. Price Range</th>
+                    </tr>
+                    <tr>
+                        <td>Mixed greens</td>
+                        <td>2 bags</td>
+                        <td>$6-8</td>
+                    </tr>
+                    <tr>
+                        <td>Spinach</td>
+                        <td>1 bag</td>
+                        <td>$2-3</td>
+                    </tr>
+                    <tr>
+                        <td>Cherry tomatoes</td>
+                        <td>1 container</td>
+                        <td>$3-4</td>
+                    </tr>
+                    <tr>
+                        <td>Cucumbers</td>
+                        <td>2 whole</td>
+                        <td>$2-3</td>
+                    </tr>
+                    <tr>
+                        <td>Bell peppers</td>
+                        <td>1 bag</td>
+                        <td>$4-5</td>
+                    </tr>
+                    <tr>
+                        <td>Broccoli</td>
+                        <td>1 bag</td>
+                        <td>$3-4</td>
+                    </tr>
+                    <tr>
+                        <td>Carrots</td>
+                        <td>1 bag</td>
+                        <td>$2-3</td>
+                    </tr>
+                    <tr>
+                        <td>Green beans</td>
+                        <td>1 bag</td>
+                        <td>$3-4</td>
+                    </tr>
+                    <tr>
+                        <td>Stir-fry vegetables</td>
+                        <td>1 bag</td>
+                        <td>$3-4</td>
+                    </tr>
+                    <tr>
+                        <td>Frozen mixed berries</td>
+                        <td>1 bag</td>
+                        <td>$4-5</td>
+                    </tr>
+                    <tr>
+                        <td>Fresh berries</td>
+                        <td>1 container</td>
+                        <td>$4-6</td>
+                    </tr>
+                    <tr>
+                        <td>Bananas</td>
+                        <td>6 pieces</td>
+                        <td>$2-3</td>
+                    </tr>
+                    <tr>
+                        <td>Pineapple chunks</td>
+                        <td>1 container</td>
+                        <td>$3-4</td>
+                    </tr>
+                    <tr>
+                        <td>Mixed mushrooms</td>
+                        <td>1 bag</td>
+                        <td>$3-4</td>
+                    </tr>
+                </table>
+
+                <h2>PANTRY STAPLES - $20-30</h2>
+                <table>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Est. Price Range</th>
+                    </tr>
+                    <tr>
+                        <td>Olive oil</td>
+                        <td>1 bottle</td>
+                        <td>$4-6</td>
+                    </tr>
+                    <tr>
+                        <td>Non-stick cooking spray</td>
+                        <td>1 can</td>
+                        <td>$3-4</td>
+                    </tr>
+                    <tr>
+                        <td>Light mayonnaise</td>
+                        <td>1 jar</td>
+                        <td>$3-4</td>
+                    </tr>
+                    <tr>
+                        <td>Low-sodium soy sauce</td>
+                        <td>1 bottle</td>
+                        <td>$2-3</td>
+                    </tr>
+                    <tr>
+                        <td>Sesame oil</td>
+                        <td>1 small bottle</td>
+                        <td>$3-4</td>
+                    </tr>
+                    <tr>
+                        <td>Balsamic vinegar</td>
+                        <td>1 bottle</td>
+                        <td>$3-4</td>
+                    </tr>
+                    <tr>
+                        <td>Lemon juice</td>
+                        <td>1 bottle</td>
+                        <td>$2-3</td>
+                    </tr>
+                    <tr>
+                        <td>Marinara sauce (low-fat)</td>
+                        <td>1 jar</td>
+                        <td>$2-3</td>
+                    </tr>
+                    <tr>
+                        <td>Salsa</td>
+                        <td>1 jar</td>
+                        <td>$3-4</td>
+                    </tr>
+                    <tr>
+                        <td>Teriyaki sauce</td>
+                        <td>1 bottle</td>
+                        <td>$2-3</td>
+                    </tr>
+                    <tr>
+                        <td>Honey</td>
+                        <td>1 bottle</td>
+                        <td>$4-5</td>
+                    </tr>
+                    <tr>
+                        <td>Unsweetened almond milk</td>
+                        <td>1 carton</td>
+                        <td>$3-4</td>
+                    </tr>
+                    <tr>
+                        <td>Spices/seasonings</td>
+                        <td>Various</td>
+                        <td>$5-10</td>
+                    </tr>
+                    <tr>
+                        <td>Baking powder</td>
+                        <td>1 container</td>
+                        <td>$2-3</td>
+                    </tr>
+                </table>
+
+                <h2>COST BREAKDOWN SUMMARY</h2>
+                <table>
+                    <tr>
+                        <th>Category</th>
+                        <th>Low Estimate</th>
+                        <th>High Estimate</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Proteins</strong></td>
+                        <td>$85</td>
+                        <td>$110</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Carbohydrates</strong></td>
+                        <td>$25</td>
+                        <td>$35</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vegetables & Fruits</strong></td>
+                        <td>$30</td>
+                        <td>$45</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pantry Staples</strong></td>
+                        <td>$20</td>
+                        <td>$30</td>
+                    </tr>
+                    <tr style="background: #667eea; color: white;">
+                        <td><strong>TOTAL WEEKLY COST</strong></td>
+                        <td><strong>$160</strong></td>
+                        <td><strong>$220</strong></td>
+                    </tr>
+                </table>
+
+                <h2>COST-SAVING TIPS</h2>
+
+                <h3>Buy in Bulk</h3>
+                <ul>
+                    <li>Purchase chicken breasts in family packs and freeze portions</li>
+                    <li>Buy quinoa and rice in larger quantities</li>
+                    <li>Frozen vegetables are often cheaper than fresh</li>
+                </ul>
+
+                <h3>Store Brands</h3>
+                <ul>
+                    <li>Generic brands can save 20-30% on most items</li>
+                    <li>Store-brand proteins are often identical quality</li>
+                    <li>Private label pantry items work just as well</li>
+                </ul>
+
+                <h3>Sales and Coupons</h3>
+                <ul>
+                    <li>Plan shopping around weekly sales</li>
+                    <li>Use store loyalty programs</li>
+                    <li>Look for manager's specials on meats near expiration</li>
+                </ul>
+
+                <h3>Seasonal Shopping</h3>
+                <ul>
+                    <li>Buy frozen berries instead of fresh (often cheaper)</li>
+                    <li>Purchase seasonal vegetables when available</li>
+                    <li>Stock up on non-perishables during sales</li>
+                </ul>
+
+                <h3>Meal Prep Savings</h3>
+                <ul>
+                    <li>Cooking in batches reduces food waste</li>
+                    <li>Proper storage extends ingredient life</li>
+                    <li>Planning prevents impulse purchases</li>
+                </ul>
+
+                <h2>MONTHLY COST PROJECTION</h2>
+                <p><strong>4-Week Month:</strong></p>
+                <ul>
+                    <li>Low estimate: $160 × 4 = $640</li>
+                    <li>High estimate: $220 × 4 = $880</li>
+                    <li><strong>Average monthly cost: $760</strong></li>
+                </ul>
+
+                <h2>COST PER MEAL</h2>
+                <p>Based on 21 meals per week (3 meals × 7 days):</p>
+                <ul>
+                    <li>Low estimate: $160 ÷ 21 = $7.62 per meal</li>
+                    <li>High estimate: $220 ÷ 21 = $10.48 per meal</li>
+                    <li><strong>Average: $9.05 per meal</strong></li>
+                </ul>
+
+                <h2>REGIONAL VARIATIONS</h2>
+
+                <h3>Higher Cost Areas (Major cities, Northeast, West Coast):</h3>
+                <ul>
+                    <li>Add 20-30% to estimates</li>
+                    <li>Total range: $200-285 per week</li>
+                </ul>
+
+                <h3>Lower Cost Areas (Midwest, South, Rural areas):</h3>
+                <ul>
+                    <li>Subtract 15-20% from estimates</li>
+                    <li>Total range: $130-185 per week</li>
+                </ul>
+
+                <h3>Money-Saving Alternatives:</h3>
+                <ul>
+                    <li>Substitute expensive fish with cheaper options (canned salmon, frozen fish)</li>
+                    <li>Use more eggs and less meat for some meals</li>
+                    <li>Buy whole chickens and portion them yourself</li>
+                    <li>Choose seasonal produce over out-of-season items</li>
+                </ul>
+
+                <h2>INVESTMENT PERSPECTIVE</h2>
+                <div class="highlight-box">
+                    <h3>💰 Value Comparison</h3>
+                    <p>While $160-220 per week may seem significant, consider:</p>
+                    <ul>
+                        <li><strong>Restaurant equivalent</strong>: 21 healthy restaurant meals would cost $300-500+</li>
+                        <li><strong>Health investment</strong>: Proper nutrition reduces healthcare costs</li>
+                        <li><strong>Fitness goals</strong>: Supporting your workout plan with proper nutrition maximizes results</li>
+                        <li><strong>Long-term savings</strong>: Healthy eating habits reduce future medical expenses</li>
+                    </ul>
+                    <p>This grocery investment directly supports your transformation goals and provides restaurant-quality nutrition at a fraction of the cost of eating out!</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="exercise" class="content-section">
+            <div class="content">
+                <h1>🏋️ Complete Exercise Instructions Guide</h1>
+                <p><em>Proper Form and Technique for All Workout Plan Exercises</em></p>
+                
+                <hr>
+                
+                <h2>UPPER BODY EXERCISES</h2>
+                
+                <div class="exercise-section">
+                    <h3>CHEST EXERCISES</h3>
+                    
+                    <h4>Barbell Bench Press</h4>
+                    <p><strong>Setup:</strong></p>
+                    <ul>
+                        <li>Lie on bench with eyes under the bar</li>
+                        <li>Grip bar slightly wider than shoulder-width</li>
+                        <li>Plant feet firmly on floor</li>
+                        <li>Maintain natural arch in lower back</li>
+                    </ul>
+                    
+                    <p><strong>Execution:</strong></p>
+                    <ol>
+                        <li>Unrack bar and position over chest</li>
+                        <li>Lower bar to chest in controlled motion (2-3 seconds)</li>
+                        <li>Touch chest lightly at nipple line</li>
+                        <li>Press bar up explosively, keeping elbows at 45-degree angle</li>
+                        <li>Lock out arms at top</li>
+                    </ol>
+                    
+                    <p><strong>Common Mistakes:</strong> Bouncing bar off chest, flaring elbows too wide, lifting butt off bench</p>
+                    
+                    <h4>Incline Dumbbell Press</h4>
+                    <p><strong>Setup:</strong></p>
+                    <ul>
+                        <li>Set bench to 30-45 degree incline</li>
+                        <li>Hold dumbbells at shoulder level</li>
+                        <li>Plant feet firmly on floor</li>
+                    </ul>
+                    
+                    <p><strong>Execution:</strong></p>
+                    <ol>
+                        <li>Press dumbbells up and slightly together</li>
+                        <li>Lower dumbbells to chest level with control</li>
+                        <li>Feel stretch in chest at bottom</li>
+                        <li>Press up explosively</li>
+                        <li>Rotate dumbbells slightly inward at top</li>
+                    </ol>
+                    
+                    <p><strong>Common Mistakes:</strong> Using too steep an incline, pressing straight up instead of slight angle, dropping dumbbells too quickly</p>
+                    
+                    <h4>Dumbbell Flyes</h4>
+                    <p><strong>Setup:</strong></p>
+                    <ul>
+                        <li>Lie on flat or incline bench</li>
+                        <li>Hold dumbbells above chest with slight bend in elbows</li>
+                        <li>Palms facing each other</li>
+                    </ul>
+                    
+                    <p><strong>Execution:</strong></p>
+                    <ol>
+                        <li>Lower dumbbells in wide arc motion</li>
+                        <li>Feel stretch across chest</li>
+                        <li>Keep slight bend in elbows throughout</li>
+                        <li>Bring dumbbells together above chest</li>
+                        <li>Squeeze chest at top</li>
+                    </ol>
+                    
+                    <p><strong>Common Mistakes:</strong> Bending elbows too much (becomes a press), going too heavy, lowering dumbbells too far</p>
+                </div>
+                
+                <div class="exercise-section">
+                    <h3>BACK EXERCISES</h3>
+                    
+                    <h4>Bent-Over Barbell Row</h4>
+                    <p><strong>Setup:</strong></p>
+                    <ul>
+                        <li>Stand with feet hip-width apart</li>
+                        <li>Hold barbell with overhand grip, hands slightly wider than shoulders</li>
+                        <li>Hinge at hips, keeping back straight</li>
+                        <li>Torso should be 45-degree angle or parallel to floor</li>
+                    </ul>
+                    
+                    <p><strong>Execution:</strong></p>
+                    <ol>
+                        <li>Pull barbell to lower chest/upper abdomen</li>
+                        <li>Squeeze shoulder blades together</li>
+                        <li>Keep elbows close to body</li>
+                        <li>Lower bar with control</li>
+                        <li>Maintain rigid torso throughout</li>
+                    </ol>
+                    
+                    <p><strong>Common Mistakes:</strong> Rounding the back, using too much leg drive, pulling to wrong part of body</p>
+                    
+                    <h4>Weighted Pull-ups/Lat Pulldowns</h4>
+                    <p><strong>Pull-ups Setup:</strong></p>
+                    <ul>
+                        <li>Hang from bar with overhand grip</li>
+                        <li>Hands slightly wider than shoulders</li>
+                        <li>Add weight with belt or hold dumbbell</li>
+                    </ul>
+                    
+                    <p><strong>Lat Pulldown Setup:</strong></p>
+                    <ul>
+                        <li>Sit at lat pulldown machine</li>
+                        <li>Grab bar with wide overhand grip</li>
+                        <li>Lean back slightly</li>
+                    </ul>
+                    
+                    <p><strong>Execution:</strong></p>
+                    <ol>
+                        <li>Pull body up (pull-ups) or bar down (pulldowns)</li>
+                        <li>Lead with chest, not chin</li>
+                        <li>Squeeze shoulder blades together</li>
+                        <li>Lower with control</li>
+                        <li>Full stretch at bottom</li>
+                    </ol>
+                    
+                    <p><strong>Common Mistakes:</strong> Swinging or using momentum, pulling behind neck, not achieving full range of motion</p>
+                </div>
+                
+                <div class="exercise-section">
+                    <h3>SHOULDER EXERCISES</h3>
+                    
+                    <h4>Overhead Press (Military Press)</h4>
+                    <p><strong>Setup:</strong></p>
+                    <ul>
+                        <li>Stand with feet shoulder-width apart</li>
+                        <li>Hold barbell at shoulder level</li>
+                        <li>Grip slightly wider than shoulders</li>
+                        <li>Engage core</li>
+                    </ul>
+                    
+                    <p><strong>Execution:</strong></p>
+                    <ol>
+                        <li>Press bar straight up over head</li>
+                        <li>Keep core tight throughout</li>
+                        <li>Don't arch back excessively</li>
+                        <li>Lock out arms at top</li>
+                        <li>Lower bar to starting position</li>
+                    </ol>
+                    
+                    <p><strong>Common Mistakes:</strong> Pressing bar forward instead of up, arching back too much, not engaging core</p>
+                    
+                    <h4>Lateral Raises</h4>
+                    <p><strong>Setup:</strong></p>
+                    <ul>
+                        <li>Stand with feet hip-width apart</li>
+                        <li>Hold dumbbells at sides</li>
+                        <li>Slight bend in elbows</li>
+                        <li>Engage core</li>
+                    </ul>
+                    
+                    <p><strong>Execution:</strong></p>
+                    <ol>
+                        <li>Raise dumbbells out to sides</li>
+                        <li>Lead with pinkies, not thumbs</li>
+                        <li>Raise to shoulder height</li>
+                        <li>Hold briefly at top</li>
+                        <li>Lower with control</li>
+                    </ol>
+                    
+                    <p><strong>Common Mistakes:</strong> Using too much weight, swinging the weights, raising above shoulder level</p>
+                </div>
+                
+                <h2>LOWER BODY EXERCISES</h2>
+                
+                <div class="exercise-section">
+                    <h3>QUAD-DOMINANT EXERCISES</h3>
+                    
+                    <h4>Barbell Back Squat</h4>
+                    <p><strong>Setup:</strong></p>
+                    <ul>
+                        <li>Position bar on upper traps (high bar) or rear delts (low bar)</li>
+                        <li>Stand with feet shoulder-width apart</li>
+                        <li>Toes slightly pointed out</li>
+                        <li>Engage core</li>
+                    </ul>
+                    
+                    <p><strong>Execution:</strong></p>
+                    <ol>
+                        <li>Initiate movement by pushing hips back</li>
+                        <li>Lower until thighs parallel to floor</li>
+                        <li>Keep knees tracking over toes</li>
+                        <li>Drive through heels to stand</li>
+                        <li>Maintain straight back throughout</li>
+                    </ol>
+                    
+                    <p><strong>Common Mistakes:</strong> Knees caving inward, rounding back, not going deep enough</p>
+                </div>
+                
+                <div class="exercise-section">
+                    <h3>HAMSTRING/GLUTE EXERCISES</h3>
+                    
+                    <h4>Romanian Deadlift (RDL)</h4>
+                    <p><strong>Setup:</strong></p>
+                    <ul>
+                        <li>Stand with feet hip-width apart</li>
+                        <li>Hold barbell with overhand grip</li>
+                        <li>Bar starts at hip level</li>
+                    </ul>
+                    
+                    <p><strong>Execution:</strong></p>
+                    <ol>
+                        <li>Push hips back while lowering bar</li>
+                        <li>Keep bar close to legs</li>
+                        <li>Feel stretch in hamstrings</li>
+                        <li>Drive hips forward to return</li>
+                        <li>Maintain straight back</li>
+                    </ol>
+                    
+                    <p><strong>Common Mistakes:</strong> Bending knees too much, rounding back, lowering bar too far</p>
+                    
+                    <h4>Hip Thrusts</h4>
+                    <p><strong>Setup:</strong></p>
+                    <ul>
+                        <li>Sit with upper back against bench</li>
+                        <li>Place barbell across hips (use pad)</li>
+                        <li>Feet flat on floor, shoulder-width apart</li>
+                    </ul>
+                    
+                    <p><strong>Execution:</strong></p>
+                    <ol>
+                        <li>Drive through heels to lift hips</li>
+                        <li>Squeeze glutes at top</li>
+                        <li>Create straight line from knees to shoulders</li>
+                        <li>Lower hips with control</li>
+                        <li>Don't hyperextend back</li>
+                    </ol>
+                    
+                    <p><strong>Common Mistakes:</strong> Arching back too much, not squeezing glutes, using neck instead of upper back on bench</p>
+                </div>
+                
+                <h2>FULL BODY/CIRCUIT EXERCISES</h2>
+                
+                <div class="exercise-section">
+                    <h3>COMPOUND MOVEMENTS</h3>
+                    
+                    <h4>Burpees</h4>
+                    <p><strong>Setup:</strong></p>
+                    <ul>
+                        <li>Stand with feet shoulder-width apart</li>
+                        <li>Arms at sides</li>
+                    </ul>
+                    
+                    <p><strong>Execution:</strong></p>
+                    <ol>
+                        <li>Squat down and place hands on floor</li>
+                        <li>Jump feet back into plank position</li>
+                        <li>Perform push-up (optional)</li>
+                        <li>Jump feet back to squat position</li>
+                        <li>Jump up with arms overhead</li>
+                    </ol>
+                    
+                    <p><strong>Common Mistakes:</strong> Not maintaining plank position, skipping the push-up, not fully extending on jump</p>
+                    
+                    <h4>Kettlebell Swings</h4>
+                    <p><strong>Setup:</strong></p>
+                    <ul>
+                        <li>Stand with feet slightly wider than shoulders</li>
+                        <li>Hold kettlebell with both hands</li>
+                        <li>Hinge at hips</li>
+                    </ul>
+                    
+                    <p><strong>Execution:</strong></p>
+                    <ol>
+                        <li>Swing kettlebell between legs</li>
+                        <li>Drive hips forward explosively</li>
+                        <li>Swing kettlebell to chest height</li>
+                        <li>Let kettlebell swing back between legs</li>
+                        <li>Repeat with continuous motion</li>
+                    </ol>
+                    
+                    <p><strong>Common Mistakes:</strong> Using arms instead of hips, swinging too high, not hinging at hips</p>
+                </div>
+                
+                <h2>CORE EXERCISES</h2>
+                
+                <div class="exercise-section">
+                    <h3>CORE STABILITY</h3>
+                    
+                    <h4>Plank</h4>
+                    <p><strong>Setup:</strong></p>
+                    <ul>
+                        <li>Start in push-up position</li>
+                        <li>Lower to forearms</li>
+                        <li>Keep body in straight line</li>
+                    </ul>
+                    
+                    <p><strong>Execution:</strong></p>
+                    <ol>
+                        <li>Hold position without sagging</li>
+                        <li>Engage core throughout</li>
+                        <li>Keep head neutral</li>
+                        <li>Breathe normally</li>
+                        <li>Maintain straight line from head to heels</li>
+                    </ol>
+                    
+                    <p><strong>Common Mistakes:</strong> Sagging hips, raising hips too high, holding breath</p>
+                    
+                    <h4>Russian Twists</h4>
+                    <p><strong>Setup:</strong></p>
+                    <ul>
+                        <li>Sit with knees bent, feet off floor</li>
+                        <li>Hold weight with both hands</li>
+                        <li>Lean back slightly</li>
+                    </ul>
+                    
+                    <p><strong>Execution:</strong></p>
+                    <ol>
+                        <li>Rotate torso to one side</li>
+                        <li>Touch weight to floor beside hip</li>
+                        <li>Rotate to opposite side</li>
+                        <li>Keep feet off floor</li>
+                        <li>Maintain balance throughout</li>
+                    </ol>
+                    
+                    <p><strong>Common Mistakes:</strong> Moving too quickly, not rotating fully, putting feet down</p>
+                </div>
+                
+                <h2>CARDIO EXERCISE GUIDELINES</h2>
+                
+                <div class="exercise-section">
+                    <h3>HIIT PROTOCOLS</h3>
+                    <p><strong>Treadmill/Bike HIIT:</strong></p>
+                    <ul>
+                        <li>2 minutes moderate warm-up</li>
+                        <li>16 minutes: 30 seconds all-out, 30 seconds recovery</li>
+                        <li>2 minutes cool-down</li>
+                    </ul>
+                    
+                    <p><strong>Rowing Machine HIIT:</strong></p>
+                    <ul>
+                        <li>2 minutes easy pace</li>
+                        <li>16 minutes: 20 seconds hard, 40 seconds easy</li>
+                        <li>2 minutes cool-down</li>
+                    </ul>
+                </div>
+                
+                <div class="exercise-section">
+                    <h3>LISS GUIDELINES</h3>
+                    <p><strong>Incline Treadmill Walk:</strong></p>
+                    <ul>
+                        <li>Speed: 3.5-4.0 mph</li>
+                        <li>Incline: 5-8%</li>
+                        <li>Target heart rate: 120-140 bpm</li>
+                        <li>Duration: 20-30 minutes</li>
+                    </ul>
+                    
+                    <p><strong>Stationary Bike:</strong></p>
+                    <ul>
+                        <li>Moderate intensity</li>
+                        <li>Target heart rate: 120-140 bpm</li>
+                        <li>Duration: 20-30 minutes</li>
+                    </ul>
+                </div>
+                
+                <h2>⚠️ SAFETY GUIDELINES</h2>
+                <div class="cost-card">
+                    <h4>🛡️ Injury Prevention</h4>
+                    <ul>
+                        <li><strong>Always warm up:</strong> 5-10 minutes light activity</li>
+                        <li><strong>Progress gradually:</strong> Increase weight/intensity slowly</li>
+                        <li><strong>Listen to your body:</strong> Rest when needed</li>
+                        <li><strong>Stay hydrated:</strong> Drink water before, during, and after</li>
+                        <li><strong>Cool down:</strong> Light stretching after workouts</li>
+                    </ul>
+                </div>
+                
+                <h2>📝 FORM CHECKLIST</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4>Before Each Set</h4>
+                        <p>Check posture, engage core, visualize movement</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>During Exercise</h4>
+                        <p>Control the weight, full range of motion, breathe properly</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>After Each Set</h4>
+                        <p>Assess form, adjust if needed, rest adequately</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Red Flags</h4>
+                        <p>Sharp pain, dizziness, loss of form - stop immediately</p>
+                    </div>
+                </div>
+                
+                <h2>🏆 PROGRESSION TIPS</h2>
+                
+                <h3>Week 1-2: Learning Phase</h3>
+                <ul>
+                    <li>Focus entirely on proper form</li>
+                    <li>Use lighter weights</li>
+                    <li>Master the movement patterns</li>
+                    <li>Don't worry about weight progression</li>
+                </ul>
+                
+                <h3>Week 3-4: Building Phase</h3>
+                <ul>
+                    <li>Increase weight by 5-10% when you can complete all sets/reps with perfect form</li>
+                    <li>Add complexity (like pausing at bottom of reps)</li>
+                    <li>Increase time under tension</li>
+                </ul>
+                
+                <h3>Week 5+: Advancement Phase</h3>
+                <ul>
+                    <li>Continue progressive overload</li>
+                    <li>Add advanced techniques (drop sets, supersets)</li>
+                    <li>Focus on weak points</li>
+                    <li>Adjust program based on progress</li>
+                </ul>
+                
+                <p><strong>Remember:</strong> Perfect form is always more important than heavy weight. Master these movement patterns and you'll see amazing results while staying injury-free!</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🏆 <strong>Remember:</strong> This comprehensive program combines nutrition, training, and proper form to create the optimal environment for your transformation.</p>
+            <p>Consistency with diet, exercise, and recovery is key to reaching your 15% body fat goal!</p>
+        </div>
+    </div>
+
+    <script>
+        function showContent(section) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(section).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
